@@ -9,7 +9,8 @@ $conn = mysqli_connect($host_name,$user_name,$user_pass,$db_name);
 if($conn){
     $image = $_POST["image"];
     $name = $_POST["name"];
-    $sql = "insert into idphoto(userId,idPhoto) values ('','$name')";
+    $id = "3";
+    $sql = "insert into idphoto(userId,idPhoto) values ('$id','$name')";
     $upload_path = "upload/$name.jpg";
 
     if(mysqli_query($conn,$sql)){
@@ -21,6 +22,6 @@ if($conn){
     }
 }
 else{
-    echo json_encode(array('response'=>'Image upload fail'));
+    echo json_encode(array('response'=>'connection fail'));
 }
 ?>
