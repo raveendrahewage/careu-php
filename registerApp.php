@@ -11,16 +11,50 @@ $email = $_POST['email'];
 $address = $_POST['address'];
 // $dateOfBirth = $_POST['dateOfBirth'];
  $phoneNumber = $_POST['phoneNumber'];
-$gender = "aaa";
-$dateOfBirth = "bbb";
+$gender = $_POST['gender'];
 
-$mysql_qry = "insert into serviceRequester (userName,password,firstName,lastName,nicNumber,gender,email,address,dateOfBirth,phoneNumber)
+$dbday = $_POST['dateOfBirth'];
+$time = strtotime($dbday);
+// $newformat = date('Y-m-d',$time);
+$dateOfBirth =  date('Y-m-d',$time);
+
+$mysql_qry = "select * from servicerequester where username like '$username' ";
+
+$result = mysqli_query($conn,$mysql_qry);
+
+if (mysqli_num_rows($result)>0) {
+	echo "Already Used User_name please use another one";
+}else{
+	$mysql_qry = "select * from serviceRequester where  nicNumber like '$nicNumber'";
+	$result = mysqli_query($conn,$mysql_qry);
+		if (mysqli_num_rows($result)>0) {
+			echo "Already Created Account using this ID";
+		}else{
+			$mysql_qry = "insert into serviceRequester (userName,password,firstName,lastName,nicNumber,gender,email,address,dateOfBirth,phoneNumber)
                values ('$username','$password','$firstName','$lastName','$nicNumber','$gender','$email','$address','$dateOfBirth','$phoneNumber')";
-if($conn->query($mysql_qry) === TRUE){
-    echo "Registration successful";
+					if($conn->query($mysql_qry) === TRUE){
+					    echo "Registration successful";
+					}
+					else{
+					    echo "Error :".$mysql_qry."<br>".$conn->error;
+					} 
+
+
+		}
+
 }
-else{
-    echo "Error :".$mysql_qry."<br>".$conn->error;
-} 
+
+
+
+
+
+// $mysql_qry = "insert into serviceRequester (userName,password,firstName,lastName,nicNumber,gender,email,address,dateOfBirth,phoneNumber)
+//                values ('$username','$password','$firstName','$lastName','$nicNumber','$gender','$email','$address','$dateOfBirth','$phoneNumber')";
+// if($conn->query($mysql_qry) === TRUE){
+//     echo "Registration successful";
+// }
+// else{
+//     echo "Error :".$mysql_qry."<br>".$conn->error;
+// } 
 $conn->close();
 ?>
