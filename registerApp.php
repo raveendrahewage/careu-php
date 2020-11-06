@@ -10,7 +10,7 @@ $nicNumber = $_POST['nicNumber'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 // $dateOfBirth = $_POST['dateOfBirth'];
- $phoneNumber = $_POST['phoneNumber'];
+$phoneNumber = $_POST['phoneNumber'];
 $gender = $_POST['gender'];
 
 $dbday = $_POST['dateOfBirth'];
@@ -33,6 +33,57 @@ if (mysqli_num_rows($result)>0) {
 			$mysql_qry = "insert into serviceRequester (userName,password,firstName,lastName,nicNumber,gender,email,address,dateOfBirth,phoneNumber)
                values ('$username','$password','$firstName','$lastName','$nicNumber','$gender','$email','$address','$dateOfBirth','$phoneNumber')";
 					if($conn->query($mysql_qry) === TRUE){
+
+						$mysql_qry_relation = "select userId from servicerequester where username like '$username' ";
+						$result = mysqli_query($conn,$mysql_qry_relation);
+						$row=$result->fetch_assoc();
+						$userId = (int) $row['userId'];
+
+							$relative1 = $_POST['relative1'];
+							$relative1Number = $_POST['relative1Number'];
+
+							if($relative1Number != NULL){
+								$mysql_query = "insert into relative (userId,name,phoneNumber) values ($userId,'$relative1','$relative1Number')";
+								$conn->query($mysql_query);
+										// if($conn->query($mysql_query) === TRUE){
+										//     echo "relative1";
+										// }
+										// else{
+										//     echo "Error :".$mysql_query."<br>".$conn->error;
+										// } 
+
+							}
+
+							$relative2 = $_POST['relative2'];
+							$relative2Number = $_POST['relative2Number'];
+
+							if($relative1Number != NULL){
+								$mysql_query = "insert into relative (userId,name,phoneNumber) values ($userId,'$relative2','$relative2Number')";
+								$conn->query($mysql_query);
+										// if($conn->query($mysql_query) === TRUE){
+										//     echo "relative1";
+										// }
+										// else{
+										//     echo "Error :".$mysql_query."<br>".$conn->error;
+										// } 
+
+							}
+
+							$relative3 = $_POST['relative3'];
+							$relative3Number = $_POST['relative3Number'];
+
+							if($relative1Number != NULL){
+								$mysql_query = "insert into relative (userId,name,phoneNumber) values ($userId,'$relative3','$relative3Number')";
+								$conn->query($mysql_query);
+										// if($conn->query($mysql_query) === TRUE){
+										//     echo "relative1";
+										// }
+										// else{
+										//     echo "Error :".$mysql_query."<br>".$conn->error;
+										// } 
+
+							}
+
 					    echo "Registration successful";
 					}
 					else{
@@ -43,6 +94,30 @@ if (mysqli_num_rows($result)>0) {
 		}
 
 }
+
+
+// $mysql_qry = "select userId from servicerequester where username like '$username' ";
+
+// $result = mysqli_query($conn,$mysql_qry);
+// $row=$result->fetch_assoc();
+// $userId = (int) $row['userId'];
+
+ // echo $id;
+
+// $relative1 = $_POST['relative1'];
+// $relative1Number = $_POST['relative1Number'];
+
+
+// 		$mysql_query = "insert into relative (userId,name,phoneNumber) values ($userId,'$relative1','$relative1Number')";
+// 		if($conn->query($mysql_query) === TRUE){
+// 					    echo "It on this spot 2";
+// 					}
+// 					else{
+// 					    echo "Error :".$mysql_query."<br>".$conn->error;
+// 					} 
+
+
+	
 
 
 
