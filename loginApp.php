@@ -9,6 +9,6 @@ if(mysqli_num_rows($result)>0){
     echo "login success";
 }
 else{
-    echo "login failed";
+    echo "User login failed";
 }
 ?>
