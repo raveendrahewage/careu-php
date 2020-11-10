@@ -57,7 +57,7 @@ if (mysqli_num_rows($result)>0) {
 							$relative2 = $_POST['relative2'];
 							$relative2Number = $_POST['relative2Number'];
 
-							if($relative1Number != NULL){
+							if($relative2Number != NULL){
 								$mysql_query = "insert into relative (userId,name,phoneNumber) values ($userId,'$relative2','$relative2Number')";
 								$conn->query($mysql_query);
 										// if($conn->query($mysql_query) === TRUE){
@@ -72,7 +72,7 @@ if (mysqli_num_rows($result)>0) {
 							$relative3 = $_POST['relative3'];
 							$relative3Number = $_POST['relative3Number'];
 
-							if($relative1Number != NULL){
+							if($relative3Number != NULL){
 								$mysql_query = "insert into relative (userId,name,phoneNumber) values ($userId,'$relative3','$relative3Number')";
 								$conn->query($mysql_query);
 										// if($conn->query($mysql_query) === TRUE){
