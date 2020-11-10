@@ -2,14 +2,29 @@
 	require  "conn.php";
 	require  "admin.php";
 
-	 $username = $_POST['username'];
-	 $email = $_POST['email'];
-	 // $username = "damish";
+	  $userName = $_POST['userName'];
+	 // $nicNumber = $_POST['nicNumber'];
+	 // $email = $_POST['email'];
+	 // $userName = "damish";
 	 // $email = "damishnisal100@gmail.com";
-	// $sql= " select * from androidreg  where email = '$email'";
+	 // $sql= " SELECT `email` FROM `servicerequester` WHERE userName = '$userName'";
 
-	// $check = mysql_query($con,$sql);
-
+	// $userName = "damish97";
+	 // $email ="damishnisal100@gmail.com";
+	$mysql_qry = "select email from servicerequester where userName like '$userName' ";
+	$result = mysqli_query($conn,$mysql_qry);
+	$aa = mysqli_num_rows($result);
+	// if(mysqli_num_rows($result)>0){
+ //    echo "login success";
+	// }
+		$row = mysqli_fetch_array($result);
+		// printf("ID: %s ", $row[0]);  
+		// $email = "$result";
+		// echo $email;
+	 $email = $row[0];
+	
+		# code...
+	
 	// if ($check) {
 		
 
@@ -41,7 +56,7 @@
 				// Set email format to HTML
 
 				$mail->Subject = 'CARE-U_ADMIN Forget Password';
-				$mail->Body    = "Press here to reset :http://localhost/careu-php/resetpassword.php?username=$username";
+				$mail->Body    = "Press here to reset :http://localhost/careu-php/resetpassword.php?userName=$userName";
 				// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 				if(!$mail->send()) {

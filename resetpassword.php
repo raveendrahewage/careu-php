@@ -1,20 +1,20 @@
 <?php
 	require  "conn.php";
 
-	$username = $_GET['username'];
+	$userName = $_GET['userName'];
 	// echo $username;
-	$sql = "select username from androidreg where username = '$username' ";
+	$sql = "select * from servicerequester where userName = '$userName'";
 	$result = mysqli_query($conn,$sql);
 	$no = mysqli_num_rows($result);
-
+	// echo $no;
 	if (mysqli_num_rows($result)===1) {
 		
 		if (isset($_POST['submit'])) {
-		$username = $_GET['username'];
+		$userName = $_GET['userName'];
 	// echo $username;
-		$sql = "select username from androidreg where username = '$username' ";
-		$result = mysqli_query($conn,$sql);
-		$no = mysqli_num_rows($result);
+		// $sql = "select username from androidreg where username = '$username' ";
+		// $result = mysqli_query($conn,$sql);
+		// $no = mysqli_num_rows($result);
 		$password = $_POST['password'];
 		$cpassword = $_POST['cpassword'];
 		// echo $password;
@@ -25,7 +25,7 @@
 			if ( $password === $cpassword ){
 
 
-				$update = "update androidreg set password = '$password' where username = '$username'";
+				$update = "update servicerequester set password = '$password' where username = '$userName'";
 				mysqli_query($conn,$update);
 
 				echo "Changed password";
@@ -84,7 +84,7 @@
 </head>
 <body>
 	<form action="" method="POST">
-		<h3><?php echo $username ?></h3>
+		<h3><?php echo $userName ?></h3>
 		
 		Enter New Password : <input type="password" name="password"> <br>
 		Confirm Password : <input type="password" name="cpassword">
