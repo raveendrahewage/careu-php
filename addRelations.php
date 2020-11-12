@@ -3,10 +3,21 @@ require  "conn.php";
  $username = $_POST['username'];
  // $username="1599";
 
-
-
-
+ $stmt = $conn->prepare(" SELECT servicerequester.userName ,servicerequester.firstName, servicerequester.lastName,servicerequester.email,servicerequester.phoneNumber,servicerequester.nicNumber ,relative.name as 'relative', relative.phoneNumber as 'relativeNumber'  FROM servicerequester INNER JOIN relative ON servicerequester.userId=relative.userId WHERE userName='$username' AND status ='1';");
  
+ $stmt->execute();
+
+	$number = 0;
+ 	while ($stmt->fetch()) {
+ 		$number++;
+ 	}
+
+
+
+if ($number<3) {
+	# code...
+
+
 	$mysql_qry_relation = "select userId from servicerequester where username like '$username' and status like '1'";
 	$result = mysqli_query($conn,$mysql_qry_relation);
 	$row=$result->fetch_assoc();
@@ -62,6 +73,9 @@ require  "conn.php";
 
 	echo "Sucessfully add the Relatives";
 
+}else {
+	echo "Allready You filled up all the relations";	
 
+}
 
 ?>
