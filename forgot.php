@@ -17,7 +17,7 @@
 	// if(mysqli_num_rows($result)>0){
  //    echo "login success";
 	// }
-		$row = mysqli_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 		// printf("ID: %s ", $row[0]);  
 		// $email = "$result";
 		// echo $email;
