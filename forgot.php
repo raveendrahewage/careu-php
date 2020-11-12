@@ -2,7 +2,7 @@
 	require  "conn.php";
 	require  "admin.php";
 
-	  $userName = $_POST['userName'];
+	   $userName = $_POST['userName'];
 	 // $nicNumber = $_POST['nicNumber'];
 	 // $email = $_POST['email'];
 	 // $userName = "damish";
@@ -21,8 +21,8 @@
 		// printf("ID: %s ", $row[0]);  
 		// $email = "$result";
 		// echo $email;
-	 $email = $row[0];
-	
+	  $email = $row[0];
+	//$email="damishnisal100@gmail.com";
 		# code...
 	
 	// if ($check) {
@@ -56,7 +56,7 @@
 				// Set email format to HTML
 
 				$mail->Subject = 'CARE-U_ADMIN Forget Password';
-				$mail->Body    = "Press here to reset :http://localhost/careu-php/resetpassword.php?userName=$userName";
+				$mail->Body    = "Press here to reset :http://localhost/careuAppWeb/careu-php/resetpassword.php?userName=$userName";
 				// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 				if(!$mail->send()) {
