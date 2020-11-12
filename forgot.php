@@ -11,7 +11,7 @@
 
 	// $userName = "damish97";
 	 // $email ="damishnisal100@gmail.com";
-	$mysql_qry = "select email from servicerequester where userName like '$userName' ";
+	$mysql_qry = "select email from servicerequester where userName like '$userName' and status like '1' ";
 	$result = mysqli_query($conn,$mysql_qry);
 	$aa = mysqli_num_rows($result);
 	// if(mysqli_num_rows($result)>0){
