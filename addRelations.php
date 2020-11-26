@@ -28,7 +28,7 @@ if ($number<3) {
 	// $relative1 = "Damish";
 	// $relative1Number = "0776560118";
 	$flag = 0;
-	if($relative1Number != NULL || $relative1 !=NULL){
+	if($relative1Number != NULL && $relative1 !=NULL){
 		$mysql_query = "insert into relative (userId,name,phoneNumber) values ($userId,'$relative1','$relative1Number')";
 		$conn->query($mysql_query);
 		// if($conn->query($mysql_query) === TRUE){
