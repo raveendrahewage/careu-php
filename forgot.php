@@ -56,7 +56,7 @@
 				// Set email format to HTML
 
 				$mail->Subject = 'CARE-U_ADMIN Forget Password';
-				$mail->Body    = "Press here to reset :http://localhost/careuAppWeb/careu-php/resetpassword.php?userName=$userName";
+				$mail->Body    = "Press here to reset :http://localhost/careu-php/resetpassword.php?userName=$userName";
 				// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 				if(!$mail->send()) {
